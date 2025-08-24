@@ -15,17 +15,21 @@ namespace DesafioFundamentos.Models
         public void AdicionarVeiculo()
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
+            // Implementei o Readline para receber a entrada e adicionar elemento na lista através do veiculos.Add utilizando a variável placa
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa= Console.ReadLine();
+            veiculos.Add(placa);
         }
 
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
+          
 
             // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
-            string placa = "";
+            // Utilizei o Readline para receber a entrada que irá para remoção.
+            string placa = Console.ReadLine();
+            
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
@@ -34,12 +38,18 @@ namespace DesafioFundamentos.Models
 
                 // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
+                // Utilizei a variável horas que irá receber a entrada de Readline. Porém, foi necessário realizar a conversão de int para String no recebimento. 
+                // Então foi utilizado int.Parse. para a conversão
+                int horas = int.Parse(Console.ReadLine());
+                
+
+                decimal valorTotal = precoInicial+precoPorHora*horas;
+                
+                
 
                 // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
+                // Remoção.
+                veiculos.Remove(placa);
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
@@ -56,7 +66,12 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Os veículos estacionados são:");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                // Utilizei o for each criando a variável v que recebe o conteúdo de veiculos, listando corretamente.
+
+                foreach (string v in veiculos)
+                {
+                    Console.WriteLine(v);
+                }
             }
             else
             {
